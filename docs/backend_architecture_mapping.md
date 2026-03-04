@@ -41,3 +41,8 @@ The standard diffusion sequence diagram missed the distinction between DDPM (noi
    - *Note: Since Prodigy has no native Rust implementation, it will need to be ported manually via Burn's `Optimizer` trait.*
    - Apply adaptive step size based on distance-to-optimal estimations.
    - Update weights and log to Terminal/Metrics.
+
+## Key Missing Architectures Resolved
+- **Prodigy:** Needs manual porting within the `burn::optim` framework. We will likely start with AdamW during initial phases to unblock development before implementing Prodigy.
+- **Flow Matching:** The architecture will optimize velocity $v_\theta$ rather than standard noise $\epsilon_\theta$.
+- **Tensor Operations:** `Burn` provides all necessary backend primitives (CUDA/WGPU) and autograd flexibility to intercept gradients midway.
