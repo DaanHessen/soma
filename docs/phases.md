@@ -5,7 +5,7 @@ To ensure perfection and reliability, development is strictly parallelized into 
 ## CHECKLIST (check an item when it is done AND tested, before continuing to the next step/phase)
 
 - [x] phase 1
-- [ ] phase 2
+- [x] phase 2
 - [ ] phase 3
 - [ ] phase 4
 - [ ] phase 5
@@ -21,13 +21,14 @@ To ensure perfection and reliability, development is strictly parallelized into 
 - **Verification:**
   - [x] Unit tests confirming loss converges to 0 on synthetic $x_0$ and $x_1$ tensors.
 
-## Phase 2: Segmentation Engine Integration
+## Phase 2: Segmentation Engine Integration ✅
 **Goal:** Get ONNX-based segmentation models running purely in Rust and transform their outputs.
 - **Steps:**
-  - Initialize ONNX Runtime (`ort`) and load a tiny segmentation model (e.g., YOLOv8n-seg).
-  - Feed an image through the module and extract mask tensors.
-  - Implement Mask shape transformations (downsampling, broadcasting to 4 channels).
-- **Verification:** Feed a test image, save the output mask as an image/array, and visually/programmatically confirm the downsampling aligns properly.
+  - [x] Initialize ONNX Runtime (`ort`) and load a tiny segmentation model (e.g., YOLOv8n-seg).
+  - [x] Feed an image through the module and extract mask tensors.
+  - [x] Implement Mask shape transformations (downsampling, broadcasting to 4 channels).
+- **Verification:**
+  - [x] Feed a test image, save the output mask as an image/array, and visually/programmatically confirm the downsampling aligns properly.
 
 ## Phase 3: SOMA Tiered Backward Pass
 **Goal:** Prove we can intercept and zero-out specific semantic gradients in Burn.
