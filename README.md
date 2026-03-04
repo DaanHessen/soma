@@ -1,0 +1,3 @@
+# SOMA - Semantic Optimized Masked Adaptation
+
+a new type of LORA architecture I am writing in Rust. This'll be painful...

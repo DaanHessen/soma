@@ -1,0 +1,38 @@
+@startuml
+title SOMA Rust Native LoRA Training Pipeline
+
+actor CLI as "Command Line Interface"
+participant Config as "Config System"
+participant Dataset as "Dataset Loader"
+participant Preprocessor as "VAE Preprocessor"
+participant Segmenter as "SAM/YOLOv8 via ORT"
+participant MaskUtils as "Mask Transformation"
+participant Model as "UNet/Transformer + T-LoRA"
+participant Loss as "Semantic Weighted + Attn Penalty"
+participant Optimizer as "Prodigy Optimizer"
+participant Checkpoint as "Safetensors Saver"
+participant Logger as "Metrics & Node UI"
+
+CLI -> Config : Load training configuration
+CLI -> Dataset : Request batch
+Dataset -> Preprocessor : Encode images -> latent tensors
+Preprocessor --> Dataset : Return latent tensors
+
+Dataset -> Segmenter : Forward images through segmentation models
+Segmenter --> MaskUtils : Return segmentation masks
+MaskUtils --> Dataset : Downsample & broadcast masks to latent shape
+
+Dataset -> Model : Forward latent tensors + conditioning
+Model -> Loss : Predicted noise & attention maps
+MaskUtils -> Loss : Provide semantic weight tensors
+Loss -> Model : Compute weighted & attention-penalty loss
+Loss -> Optimizer : Calculate gradients with tiered backward pass
+Optimizer -> Model : Update model weights
+Optimizer -> Logger : Log metrics
+
+Model -> Checkpoint : Save model weights periodically
+Checkpoint -> Logger : Record checkpoint info
+
+CLI -> Logger : Display progress, optional node-graph view
+
+@enduml
