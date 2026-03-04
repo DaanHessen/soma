@@ -1,31 +1,19 @@
 [package]
-name = "native-diffusion-trainer"
+name = "soma"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-# Core Deep Learning Stack
-burn = { version = "0.13", features = ["train", "wgpu", "autodiff", "cuda"] }
-burn-train = "0.13"
-
-# Segmentation Engine (ONNX Runtime)
-ort = { version = "2.0.0-rc.10", features = ["cuda", "half"] }
-image = "0.24" # For preprocessing
-
-# Tensor and ML Utilities
-candle-core = "0.9" # Used for some interop with HuggingFace
-safetensors = "0.4"
-tokenizers = "0.19"
-ndarray = "0.15"
-
-# Optimization and Serialization
+burn = { version = "0.20", features = ["train", "wgpu", "autodiff", "ndarray"] }
 anyhow = "1.0"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-clap = { version = "4.4", features = ["derive"] } # CLI support
+
+[dev-dependencies]
+burn = { version = "0.20", features = ["train", "wgpu", "autodiff", "ndarray"] }
 
 [profile.release]
 opt-level = 3
 lto = true
 codegen-units = 1
-panic = 'abort'
+panic = "abort"

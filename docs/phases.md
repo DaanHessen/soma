@@ -2,6 +2,16 @@
 
 To ensure perfection and reliability, development is strictly parallelized into small, testable phases. We will not proceed to the next phase until the current one is mathematically and programmatically verified.
 
+## CHECKLIST (check an item when it is done AND tested, before continuing to the next step/phase)
+
+- [ ] phase 1
+- [ ] phase 2
+- [ ] phase 3
+- [ ] phase 4
+- [ ] phase 5
+- [ ] phase 6
+- [ ] phase 7
+
 ## Phase 1: Core Foundation & Mock Flow Matching
 **Goal:** Establish the Rust project, the `burn` ML backend, and the core loss mathematics.
 - **Steps:**
