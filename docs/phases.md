@@ -4,7 +4,7 @@ To ensure perfection and reliability, development is strictly parallelized into 
 
 ## CHECKLIST (check an item when it is done AND tested, before continuing to the next step/phase)
 
-- [ ] phase 1
+- [x] phase 1
 - [ ] phase 2
 - [ ] phase 3
 - [ ] phase 4
@@ -12,13 +12,14 @@ To ensure perfection and reliability, development is strictly parallelized into 
 - [ ] phase 6
 - [ ] phase 7
 
-## Phase 1: Core Foundation & Mock Flow Matching
+## Phase 1: Core Foundation & Mock Flow Matching ✅
 **Goal:** Establish the Rust project, the `burn` ML backend, and the core loss mathematics.
 - **Steps:**
-  - Setup cargo with `burn` (CUDA/WGPU features) and `ort`.
-  - Implement the Flow Matching (Velocity Prediction) loss function.
-  - Build a dummy MLP/Linear model to verify that the Burn Autodiff calculates gradients correctly using the loss function.
-- **Verification:** Unit tests confirming loss converges to 0 on synthetic $x_0$ and $x_1$ tensors.
+  - [x] Setup cargo with `burn` (CUDA/WGPU features) and `ort`.
+  - [x] Implement the Flow Matching (Velocity Prediction) loss function.
+  - [x] Build a dummy MLP/Linear model to verify that the Burn Autodiff calculates gradients correctly using the loss function.
+- **Verification:**
+  - [x] Unit tests confirming loss converges to 0 on synthetic $x_0$ and $x_1$ tensors.
 
 ## Phase 2: Segmentation Engine Integration
 **Goal:** Get ONNX-based segmentation models running purely in Rust and transform their outputs.
